@@ -1,5 +1,5 @@
-
 import java.time.LocalDate;
+public abstract class Persoon{
     private String voornaam;
     private String achternaam;
     private String rijksregisternummer;
@@ -12,21 +12,47 @@ import java.time.LocalDate;
         this.geboortedatum = geboortedatum;
     }
 
-    public String geefVoornaam() {
+
+    public String getVoornaam() {
         return voornaam;
     }
 
-    public void stelVoornaamIn(String voornaam) {
+    public void setVoornaam(String voornaam) {
         this.voornaam = voornaam;
     }
 
-    public String geefAchterNaam() {
+    public String getAchternaam() {
         return achternaam;
     }
 
-    public void stelAchterNaam(String achterNaam) {
-        this.achternaam = achterNaam;
+    public void setAchternaam(String achternaam) {
+        this.achternaam = achternaam;
     }
-    //nu voor de rest
 
+
+    public String getRijksregisternummer() {
+        return rijksregisternummer;
+    }
+
+    public void setRijksregisternummer(String rijksregisternummer) {
+        this.rijksregisternummer = rijksregisternummer;
+    }
+
+    public LocalDate getGeboortedatum() {
+        return geboortedatum;
+    }
+
+    public void setGeboortedatum(LocalDate geboortedatum) {
+        this.geboortedatum = geboortedatum;
+    }
+
+    @Override
+    public String toString() {
+        return "Persoon{" +
+                "voornaam='" + voornaam + '\'' +
+                ", achternaam='" + achternaam + '\'' +
+                ", rijksregisternummer='" + rijksregisternummer + '\'' +
+                ", geboortedatum=" + geboortedatum +
+                '}';
+    }
 }
