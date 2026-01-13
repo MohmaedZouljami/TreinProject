@@ -4,7 +4,7 @@ import java.util.Set;
 
 public abstract class Personeelslid extends Persoon {
     private Set<Certificatie> certificaties = new HashSet();
-        public Personeelslid(String voornaam, String achternaam, String rijksregisternummer, LocalDate geboortedatum, Set<Certificatie> certificaties) {
+        public Personeelslid(String voornaam, String achternaam, String rijksregisternummer, LocalDate geboortedatum) {
         super(voornaam, achternaam, rijksregisternummer, geboortedatum);
         this.certificaties = certificaties;
     }
