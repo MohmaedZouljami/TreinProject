@@ -6,7 +6,7 @@ public class reis {
     private LocalDateTime vertrekTijd;
     private trein trein;
     private ArrayList<Personeelslid> personeelsleden = new ArrayList<>();
-    private ArrayList<Ticket> tickets = new ArrayList<>();
+    private ArrayList<ticket> tickets = new ArrayList<>();
 
     public reis(String vertrekStation, String aankomstStation, LocalDateTime vertrekTijd, trein trein) {
 
@@ -18,13 +18,13 @@ public class reis {
         public void voegPersoneelslidToe(Personeelslid p){
         personeelsleden.add(p);
     }
-    public void voegTicketToe(Ticket t){
+    public void voegTicketToe(ticket t){
         tickets.add(t);
     }
     public ArrayList<Personeelslid> geefPersoneelsleden(){
         return personeelsleden;
     }
-    public ArrayList<Ticket> geefTickets(){
+    public ArrayList<ticket> geefTickets(){
         return tickets; }
 
 
