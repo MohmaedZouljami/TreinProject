@@ -1,0 +1,1 @@
+[scanner uitleg op w3schools](https://www.w3schools.com/java/java_user_input.asp?utm_source=copilot.com)

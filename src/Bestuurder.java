@@ -5,6 +5,7 @@ public class Bestuurder extends Personeelslid {
 
     @Override
     public String toString() {
-        return "Bestuurder{}";
+        return "Bestuurder{" + super.toString() + "}";
+
     }
 }

@@ -8,6 +8,6 @@ public class conducteur extends Personeelslid{
 
     @Override
     public String toString() {
-        return "conducteur{}";
+        return "conducteur{" + super.toString() + "}";
     }
 }

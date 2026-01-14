@@ -1,46 +1,56 @@
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.ArrayList;
 public class reis {
-    private String vertrekStation;
-    private String aankomstStation;
-    private LocalDateTime vertrekTijd;
-    private trein trein;
-    private ArrayList<Personeelslid> personeelsleden = new ArrayList<>();
-    private ArrayList<ticket> tickets = new ArrayList<>();
+    private String vertrekstation;
+    private String aankomststation;
+    private LocalDateTime tijdstip;
+    /**
+     * HIER KOMT DE TREIN
+     */
+    private Trein trein;
+    private List<ticket> tickets = new ArrayList<>();
+    public reis(String vertrekstation, String aankomststation, LocalDateTime tijdstip) {
+        this.vertrekstation = vertrekstation;
+        this.aankomststation = aankomststation;
+        this.tijdstip = tijdstip;
+    }
 
-    public reis(String vertrekStation, String aankomstStation, LocalDateTime vertrekTijd, trein trein) {
+    public String getVertrekstation() {
+        return vertrekstation;
+    }
 
-        this.vertrekStation = vertrekStation;
-        this.aankomstStation = aankomstStation;
-        this.vertrekTijd = vertrekTijd;
+    public String getAankomststation() {
+        return aankomststation;
+    }
+
+    public LocalDateTime getTijdstip() {
+        return tijdstip;
+    }
+
+    /**
+     * TREIN KOPPELEN
+     */
+    public void setTrein(Trein trein) {
         this.trein = trein;
     }
 
-    public reis(String vertrektation, String aankomststation) {
+    public Trein getTrein() {
+        return trein;
     }
+    public void voegTicketToe(ticket ticket) {
+        tickets.add(ticket); }
 
-    public void voegPersoneelslidToe(Personeelslid p){
-        personeelsleden.add(p);
-    }
-    public void voegTicketToe(ticket t){
-        tickets.add(t);
-    }
-    public ArrayList<Personeelslid> geefPersoneelsleden(){
-        return personeelsleden;
-    }
-    public ArrayList<ticket> geefTickets(){
+    public List<ticket> getTickets() {
         return tickets; }
 
+    public boolean heeftPlaats() {
+        if (trein == null) return false;
+        return tickets.size() < trein.getCapaciteit();
+    }
 
     @Override
     public String toString() {
-        return "reis{" +
-                "vertrekStation='" + vertrekStation + '\'' +
-                ", aankomstStation='" + aankomstStation + '\'' +
-                ", vertrekTijd=" + vertrekTijd +
-                ", trein=" + trein +
-                ", personeelsleden=" + personeelsleden +
-                ", tickets=" + tickets +
-                '}';
+        return vertrekstation + " → " + aankomststation + " om " + tijdstip;
     }
 }

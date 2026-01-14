@@ -1,35 +1,38 @@
 public class ticket {
-    private passagiers passagier;
+    private Passagier passagier;
     private reis reis;
     private KlasseType klasse;
 
-    public ticket(passagiers passagier, reis reis, KlasseType klasse) {
+    public ticket(Passagier passagier, reis reis, KlasseType klasse) {
         this.passagier = passagier;
         this.reis = reis;
         this.klasse = klasse;
     }
-
-    public passagiers geefPassagier() {
+    public double getPrijs() {
+        if (klasse == KlasseType.EERSTE_KLASSE) {
+            return 80.0;
+        } else {
+            return 50.0;
+        }
+    }
+    public Passagier getPassagier() {
         return passagier;
     }
 
-
-    public reis geefReis(reis reis) {
+    public reis getReis() {
         return reis;
     }
 
-    public KlasseType geefKlasse(KlasseType klasse) {
+    public KlasseType getKlasse() {
         return klasse;
     }
 
     @Override
     public String toString() {
-        return "ticket{" +
-                "passagier=" + passagier +
-                ", reis=" + reis +
-                ", klasse=" + klasse +
-                '}';
+        return "🎫 Ticket voor " + passagier.getVoornaam() + " " + passagier.getAchternaam() +
+                "🧳 Reis: " + reis.getVertrekstation() + " → " + reis.getAankomststation() +
+                " om " + reis.getTijdstip() +
+                "📝 Klasse: " + klasse +
+                " 🚄Trein: " + reis.getTrein().getType();
     }
 }
-
-

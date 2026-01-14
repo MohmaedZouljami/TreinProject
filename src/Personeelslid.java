@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public abstract class Personeelslid extends Persoon {
-    private Set<Certificatie> certificaties = new HashSet();
+    private Set<Certificatie> certificaties = new HashSet<>();
         public Personeelslid(String voornaam, String achternaam, String rijksregisternummer, LocalDate geboortedatum) {
         super(voornaam, achternaam, rijksregisternummer, geboortedatum);
         this.certificaties = certificaties;
@@ -19,8 +19,7 @@ public abstract class Personeelslid extends Persoon {
 
     @Override
     public String toString() {
-        return "Personeelslid{" +
-                "certificaties=" + certificaties +
-                '}';
+        return "Personeelslid{" + super.toString() + ", certificaties=" + certificaties + "}";
+
     }
 }

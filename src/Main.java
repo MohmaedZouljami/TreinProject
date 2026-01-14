@@ -1,119 +1,179 @@
-/**Wat is Scanner?
- *WScanner laat je toe om gegevens van de gebruiker in te lezen zodat je programma interactief wordt
- * */
-
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Main {
+    private static ArrayList<Passagier> Passagier = new ArrayList<>();
+    private static ArrayList<reis> reizen = new ArrayList<>();
+    private static ArrayList<ticket> tickets = new ArrayList<>();
+    private static ArrayList<Trein> treinen = new ArrayList<Trein>();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        euromoon beheer = new euromoon();
         boolean bezig = true;
-
         while (bezig) {
+            System.out.println("\n===============================");
+            System.out.println("🚉  TICKET SYSTEEM - HOOFDMENU");
+            System.out.println("===============================");
+            System.out.println("1️⃣  Passagier registreren");
+            System.out.println("2️⃣  Reis aanmaken");
+            System.out.println("3️⃣  Trein koppelen");
+            System.out.println("4️⃣  Ticket verkopen");
+            System.out.println("0️⃣  Programma stoppen");
+            System.out.print("👉 Maak een keuze: ");
 
-            System.out.println(" MENU ");
-            System.out.println("1. Passagiers ");
-            System.out.println("2. reis");
-            System.out.println("3. Trein ");
-            System.out.println("4. Ticket ");
-            System.out.println("5. klasse");
+
+
+
             int keuze = scanner.nextInt();
             scanner.nextLine();
 
-            int keuze = scanner.nextInt();
-            scanner.nextLine();
             switch (keuze) {
-
                 case 1:
-                    passagiersToeVoegen(scanner, beheer);
+                    PassagierToevoegen(scanner);
                     break;
                 case 2:
-                    reisToeVoegen(scanner, beheer);
+                    reisToevoegen(scanner);
                     break;
                 case 3:
-                    treinToeVoegen(scanner,beheer);
+                    TreinToevoegen(scanner);
                     break;
                 case 4:
-                    ticketToeVoegen(scanner,beheer);
+                    ticketToevoegen(scanner);
                     break;
-                case 5:
-                    klasseToeVoegen(scanner,beheer);
-                    break;
+
                 case 0:
                     bezig = false;
-                    System.out.println("afsluite");
+                    System.out.println("Programma afgesloten.");
                     break;
 
-            }
+                default:
+                    System.out.println("Ongeldige keuze.");
 
+            }
         }
     }
-}
-public static void passagiersToeVoegen(Scanner scanner, euromoon beheer) {
-
-    System.out.print("voornaam");
-    String voornaam = scanner.nextLine();
-
-    System.out.print("achtenaam");
-    String achternaam = scanner.nextLine();
-
-    System.out.print("rijkregisternummer");
-    String rijkregisternummer = scanner.nextLine();
-
-    System.out.print("geboortejaar");
-    int geboortejaar = scanner.nextInt();
-
-    System.out.print("maand");
-    int maand = scanner.nextInt();
-
-    System.out.print("dag");
-    int dag = scanner.nextInt();
-
-    LocalDate geboortedatum = LocalDate.of(geboortejaar, maand, dag);
-
-    passagiers m = new passagiers(voornaam, achternaam, rijkregisternummer);
-}
 
 
+    private static void PassagierToevoegen(Scanner scanner) {
+        System.out.print("Voornaam: ");
+        String voornaam = scanner.nextLine();
 
+        System.out.print("Achternaam: ");
+        String achternaam = scanner.nextLine();
 
+        System.out.print("Rijksregisternummer: ");
+        String rijks = scanner.nextLine();
 
+        System.out.print("Geboortejaar: ");
+        int jaar = scanner.nextInt();
 
+        System.out.print("Maand: ");
+        int maand = scanner.nextInt();
 
+        System.out.print("Dag: ");
+        int dag = scanner.nextInt();
+        scanner.nextLine();
 
+        LocalDate geboortedatum = LocalDate.of(jaar, maand, dag);
 
+        Passagier p = new Passagier(voornaam, achternaam, rijks, geboortedatum);
+        Passagier.add(p);
 
-public static void reisToeVoegen (Scanner scanner, euromoon beheer) {
-    System.out.print("Vertrekstation: ");
-    String vertrektation = scanner.nextLine();
+        System.out.println("Passagier toegevoegd!");
+    }
 
-    System.out.print("Aankomststation");
-    String aankomststation = scanner.nextLine();
+    private static void reisToevoegen(Scanner scanner) {
+        System.out.print("Vertrekstation: ");
+        String vertrek = scanner.nextLine();
 
-    System.out.print("jaar: ");
-    int jaar = scanner.nextInt();
+        System.out.print("Aankomststation: ");
+        String aankomst = scanner.nextLine();
 
-    System.out.print("maand: ");
-    int maand = scanner.nextInt();
+        System.out.print("Jaar: ");
+        int jaar = scanner.nextInt();
 
-    System.out.print("dag: ");
-    int dag = scanner.nextInt();
+        System.out.print("Maand: ");
+        int maand = scanner.nextInt();
 
-    System.out.print("uur: ");
-    int uur = scanner.nextInt();
+        System.out.print("Dag: ");
+        int dag = scanner.nextInt();
 
-    System.out.print("minuten: ");
-    int min = scanner.nextInt();
+        System.out.print("Uur: ");
+        int uur = scanner.nextInt();
 
-    System.out.println("Kies u trein:");
+        System.out.print("Minuten: ");
+        int min = scanner.nextInt();
+        scanner.nextLine();
 
-
-    if (beheer.getReizen().isEmpty()) {
-        System.out.println("Geen treinen beschikbaar.");
+        LocalDateTime tijdstip = LocalDateTime.of(jaar, maand, dag, uur, min);
+        reis r = new reis(vertrek, aankomst, tijdstip);
+        Main.reizen.add(r);
 
     }
 
-    trein t = beheer.getTreinen().get(0);
-    reis r = new reis(vertrektation, aankomststation);
-    LocalDateTime datum = LocalDateTime.of(jaar, maand, dag, uur, min );
+    private static void TreinToevoegen(Scanner scanner) {
+        System.out.println("Kies een locomotief type:");
+        System.out.println("1. CLASS_373 (12 wagons)");
+        System.out.println("2. CLASS_374 (14 wagons)");
+        System.out.print("Keuze: ");
+
+        int keuze = scanner.nextInt();
+        scanner.nextLine();
+
+        LocomotiefType type;
+
+        if (keuze == 1) {
+            type = LocomotiefType.CLASS_373;
+        } else if (keuze == 2) {
+            type = LocomotiefType.CLASS_374;
+        } else {
+            System.out.println("Ongeldige keuze.");
+            return;
+        }
+        Trein t = new Trein(type);
+        treinen.add(t);
+        System.out.println("Trein toegevoegd: " + t);
+    }
+
+    private static void ticketToevoegen(Scanner scanner) {
+
+        if (Passagier.isEmpty()) {
+            System.out.println("❌ Er zijn nog geen passagiers geregistreerd.");
+            return;
+        }
+
+        if (reizen.isEmpty()) {
+            System.out.println("❌ Er zijn nog geen reizen aangemaakt.");
+            return;
+        }
+
+        if (treinen.isEmpty()) {
+            System.out.println("❌ Er is nog geen trein gekoppeld.");
+            return;
+        }
+
+        // Automatisch eerste passagier, eerste reis, eerste trein
+        Passagier passagier = Passagier.get(0);
+        reis gekozenReis = reizen.get(0);
+        Trein trein = treinen.get(0);
+
+        // Koppel trein aan reis (indien nog niet gebeurd)
+        gekozenReis.setTrein(trein);
+
+        // Standaard klasse
+        KlasseType klasse = KlasseType.EERSTE_KLASSE;
+
+        // Ticket aanmaken (GEEN capaciteit-check meer)
+        ticket ticket = new ticket(passagier, gekozenReis, klasse);
+        tickets.add(ticket);
+
+        // Resultaat tonen
+        System.out.println("\n===============================");
+        System.out.println("🎫  TICKET");
+        System.out.println("===============================");
+        System.out.println(ticket);
+
+    }
 }

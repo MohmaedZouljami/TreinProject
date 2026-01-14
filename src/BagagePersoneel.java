@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
         @Override
         public String toString() {
-            return "BagagePersoneel{}";
+            return "BagagePersoneel{" + super.toString() + "}";
         }
     }
 

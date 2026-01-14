@@ -1,61 +1,61 @@
 import java.util.ArrayList;
 public class euromoon{
-    private ArrayList<passagiers> passagiers = new ArrayList<>();
-    private ArrayList<Personeelslid> personeelsleden = new ArrayList<>();
-    private ArrayList<trein> treinen = new ArrayList<>();
-    private ArrayList<reis> reizen = new ArrayList<>();
-    private ArrayList<ticket> tickets = new ArrayList<>();
+    private ArrayList<Passagier> Passagier = new ArrayList<>();
+    private ArrayList<Personeelslid> Personeelsleden = new ArrayList<>();
+    private ArrayList<Trein> Trein = new ArrayList<>();
+    private ArrayList<reis> Reis = new ArrayList<>();
+    private ArrayList<ticket> Ticket = new ArrayList<>();
 
 
-    public ArrayList<passagiers> getPassagiers() {
-        return passagiers;
+    public ArrayList<Passagier> getPassagiers() {
+        return Passagier;
     }
 
-    public void setPassagiers(ArrayList<passagiers> passagiers) {
-        this.passagiers = passagiers;
+    public void setPassagier(ArrayList<Passagier> passagiers) {
+        this.Passagier = Passagier;
     }
 
     public ArrayList<Personeelslid> getPersoneelsleden() {
-        return personeelsleden;
+        return Personeelsleden;
     }
 
     public void setPersoneelsleden(ArrayList<Personeelslid> personeelsleden) {
-        this.personeelsleden = personeelsleden;
+        this.Personeelsleden = personeelsleden;
     }
 
-    public ArrayList<trein> getTreinen() {
-        return treinen;
+    public ArrayList<Trein> getTreinen(Trein t) {
+        return Trein;
     }
 
-    public void setTreinen(ArrayList<trein> treinen) {
-        this.treinen = treinen;
+    public void setTreinen(ArrayList<Trein> treinen) {
+        this.Trein = treinen;
     }
 
     public ArrayList<reis> getReizen() {
-        return reizen;
+        return Reis;
     }
 
     public void setReizen(ArrayList<reis> reizen) {
-        this.reizen = reizen;
+        this.Reis = reizen;
     }
 
     public ArrayList<ticket> getTickets() {
-        return tickets;
+        return Ticket;
     }
 
     public void setTickets(ArrayList<ticket> tickets) {
-        this.tickets = tickets;
+        this.Ticket = tickets;
     }
 
 
     @Override
     public String toString() {
         return "euromoon{" +
-                "passagiers=" + passagiers +
-                ", personeelsleden=" + personeelsleden +
-                ", treinen=" + treinen +
-                ", reizen=" + reizen +
-                ", tickets=" + tickets +
+                "passagiers=" + Passagier +
+                ", personeelsleden=" + Personeelsleden +
+                ", treinen=" + Trein +
+                ", reizen=" + Reis +
+                ", tickets=" + Ticket +
                 '}';
     }
 }
