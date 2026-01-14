@@ -52,7 +52,7 @@ public class Main {
 
 
     /**
-     * Leest veilig een geheel getal in via de scanner.
+     * Leest veilig een geheel getal in via de scanner..
      */
 
     private static int leesInt(Scanner scanner) {
