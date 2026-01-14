@@ -1,38 +1,37 @@
-class Trein {
+/**
+ * Klasse die een trein voorstelt.
+ * De capaciteit wordt berekend op basis van het locomotieftype.
+ */
+public class Trein {
+
     private LocomotiefType type;
-    private int wagons;
-    private int plaatsenPerWagon = 80;
     private int capaciteit;
 
-
-    public Trein(LocomotiefType type){
+    /**
+     * Constructor voor Trein.
+     * Berekent de totale capaciteit op basis van het aantal wagons.
+     */
+    public Trein(LocomotiefType type) {
         this.type = type;
-
-
-        if (type == LocomotiefType.CLASS_373){
-            this.wagons = 12;}
-        else{
-            this.wagons = 14;
-        } }
-
-
-    public LocomotiefType getType() {
-        return type; }
-
-    public int getWagons() {
-        return wagons;
-
+        this.capaciteit = type.geefMaximaalAantalWagons() * 80;
     }
-    public int getPlaatsenPerWagon() {
-        return plaatsenPerWagon;
 
-    } public int getTotalePlaatsen(){
-        return wagons * plaatsenPerWagon; }
+    /**
+     * Geeft het type van de trein terug.
+     */
+    public LocomotiefType getType() {
+        return type;
+    }
 
-    @Override public String toString(){
-        return type + " - " + wagons + " wagons (" + getTotalePlaatsen() + " plaatsen)"; }
-
+    /**
+     * Geeft de totale capaciteit van de trein terug.
+     */
     public int getCapaciteit() {
         return capaciteit;
+    }
+
+    @Override
+    public String toString() {
+        return type + " (" + type.geefMaximaalAantalWagons() + " wagons, " + capaciteit + " zitplaatsen)";
     }
 }
