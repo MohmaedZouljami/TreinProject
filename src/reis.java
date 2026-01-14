@@ -15,7 +15,11 @@ public class reis {
         this.vertrekTijd = vertrekTijd;
         this.trein = trein;
     }
-        public void voegPersoneelslidToe(Personeelslid p){
+
+    public reis(String vertrektation, String aankomststation) {
+    }
+
+    public void voegPersoneelslidToe(Personeelslid p){
         personeelsleden.add(p);
     }
     public void voegTicketToe(ticket t){
